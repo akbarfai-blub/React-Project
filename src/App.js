@@ -4,6 +4,7 @@ import Navbar from "./scenes/Navbar";
 import Landing from "./scenes/Landing";
 import MySkills from "./scenes/MySkills";
 import Projects from "./scenes/Projects";
+import Contact from "./scenes/Contact";
 import Testimonials from "./scenes/Testimonials";
 import LineGradient from "./components/LineGradient";
 import useMediaQuery from "./hooks/useMediaQuery";
@@ -52,6 +53,10 @@ function App() {
       <linearGradient />
       <div className="w-5/6 mx-auto md:h-full">
         <Testimonials />
+      </div>
+      <linearGradient />
+      <div className="w-5/6 mx-auto md:h-full">
+        <Contact />
       </div>
     </div>
   );
