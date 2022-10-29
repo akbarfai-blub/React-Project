@@ -12,6 +12,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoader(true);
 
     db.collection("contacts")
       .add({
