@@ -84,7 +84,7 @@ const Contact = () => {
           }}
           className="basis-1/2 mt-10 md:mt-0"
         >
-          <form target="_blank" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <input
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3"
               type="text"
@@ -111,6 +111,7 @@ const Contact = () => {
             <button
               className="p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500"
               type="submit"
+              style={{ background: loader }}
             >
               SEND ME A MESSAGE
             </button>
