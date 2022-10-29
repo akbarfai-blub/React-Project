@@ -1,37 +1,25 @@
 import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
-import { db } from "../firebase";
 import { useState } from "react";
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
 
-  const [loader, setLoader] = useState(false);
+  const userCollectionRef = collection(db, "contactdata");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoader(true);
-
-    db.collection("contacts")
-      .add({
-        name: name,
-        email: email,
-        message: message,
-      })
-      .then(() => {
-        setLoader(false);
-        alert("Your message has been submitted👍");
-      })
-      .catch((error) => {
-        alert(error.message);
-        setLoader(false);
-      });
-
-    setName("");
-    setEmail("");
-    setMessage("");
+    addDoc(userCollectionRef, {
+      name: name,
+      email: email,
+      message: message,
+    }).then(() => {
+      if (!alert("Your message has been submitted👍"));
+    });
   };
 
   return (
@@ -85,34 +73,38 @@ const Contact = () => {
           }}
           className="basis-1/2 mt-10 md:mt-0"
         >
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="_blank">
             <input
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3"
               type="text"
               placeholder="NAME"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              id="name"
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
             />
             <input
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
-              type="text"
+              type="email"
               placeholder="EMAIL"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
             />
             <textarea
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
-              name="message"
               placeholder="MESSAGE"
               rows="4"
               cols="50"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              id="message"
+              onChange={(event) => {
+                setMessage(event.target.value);
+              }}
             />
             <button
               className="p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500"
-              type="submit"
-              style={{ background: loader }}
+              onClick={handleSubmit}
             >
               SEND ME A MESSAGE
             </button>
