@@ -53,7 +53,7 @@ const Projects = () => {
             MY <span className="text-red">PRO</span>JECTS
           </p>
           <div className="flex justify-center mt-5">
-            <linearGradient width="w-1/3" />
+            <LineGradient width="w-1/3" />
           </div>
         </div>
 

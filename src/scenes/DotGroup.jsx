@@ -29,11 +29,11 @@ before:top-[-50%]`;
         onClick={() => setSelectedPage("projects")}
       />
       <AnchorLink
+        href="#testimonials"
         className={`${
-          selectedPage === "testimonial" ? selectedStyles : "bg-dark-grey"
+          selectedPage === "testimonials" ? selectedStyles : "bg-dark-grey"
         } w-3 h-3 rounded-full`}
-        href="#testimonial"
-        onClick={() => setSelectedPage("testimonial")}
+        onClick={() => setSelectedPage("testimonials")}
       />
       <AnchorLink
         className={`${
